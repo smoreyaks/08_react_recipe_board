@@ -1,6 +1,6 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useFetch } from '../../hooks/useFetch'
-
+import { useHistory } from 'react-router-dom';
 
 // Styles
 import "./Create.css"
@@ -19,6 +19,17 @@ export default function Create() {
     e.preventDefault()
     postData({ title, ingredients, method, cookingTime: cookingTime + ' minutes'})
     }
+
+    // Redirect to Home Page after POST request when get a data response
+  const history = useHistory();     // For redirect
+
+  useEffect(() => {                   // Redirect Function on Fetch error
+    if (data) {
+      history.push('/')
+    }
+  }, [data, history]);
+
+
 
   const handleAdd = (e) => {
     e.preventDefault()

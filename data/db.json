@@ -38,15 +38,25 @@
       "cookingTime": "35 minutes"
     },
     {
-      "title": "aawdawdaw",
+      "title": "Potato Salad",
       "ingredients": [
-        "awdawdawd",
-        "ggg",
-        "hhh"
+        "potato",
+        "leek",
+        "bacon"
       ],
-      "method": "awdawdawd",
+      "method": "make stuff",
       "cookingTime": "45 minutes",
-      "id": "TnnLq1F"
+      "id": "Vj-F3I2"
+    },
+    {
+      "title": "Chickpea Curry",
+      "ingredients": [
+        "chickpeas",
+        "curry"
+      ],
+      "method": "Here is a method",
+      "cookingTime": "45 minutes",
+      "id": "JL9JC0a"
     }
   ]
 }
