@@ -1,11 +1,19 @@
+// Hooks
 import { useState, useRef, useEffect } from 'react'
 import { useFetch } from '../../hooks/useFetch'
+import { useTheme } from '../../hooks/useTheme'
 import { useHistory } from 'react-router-dom';
 
 // Styles
 import "./Create.css"
 
+// Context
+import { ThemeContext } from '../../context/ThemeContext'
+
 export default function Create() {
+  const { color } = useTheme()
+
+
   const [title, setTitle] = useState('');
   const [method, setMethod] = useState('');
   const [cookingTime, setCookingTime] = useState('');
@@ -46,8 +54,6 @@ export default function Create() {
       <h2 className="page-title">Add A New Recipe</h2>
       <form onSubmit={ handleSubmit }>
         
-
-        
         {/* */}
         <label>
           <span>Recipe Title:</span>
@@ -68,7 +74,7 @@ export default function Create() {
             value={newIngredient}
             ref={ingredientInput}
             />
-            <button className="btn" onClick={ handleAdd }>Add</button>
+            <button className="btn" onClick={ handleAdd } style={ {background: color} }>Add</button>
           </div>
         </label>
         
@@ -83,7 +89,8 @@ export default function Create() {
               required
             />
         </label>
-        {/**/}
+
+        {/* */}
         <label>
           <span>Cooking Time (mins):</span>
           <input type="number" 
@@ -92,7 +99,7 @@ export default function Create() {
           required
           />
         </label>
-        <button className="button">Submit</button>
+        <button className="button" style={ {background: color} }>Submit</button>
 
       </form>
     </div>
