@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { useFetch } from '../../hooks/useFetch'
 import { useHistory } from 'react-router-dom';
+import { useTheme } from '../../hooks/useTheme'
 
 // Styles
 import "./Create.css"
@@ -12,8 +13,9 @@ export default function Create() {
   const [newIngredient, setNewIngredient] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const ingredientInput = useRef(null)
-
+  
   const { postData, data, error } = useFetch('http://localhost:3000/recipes', 'POST');
+  const { color } = useTheme();
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -68,7 +70,7 @@ export default function Create() {
             value={newIngredient}
             ref={ingredientInput}
             />
-            <button className="btn" onClick={ handleAdd }>Add</button>
+            <button className="btn" onClick={ handleAdd } style={{background: color}}>Add</button>
           </div>
         </label>
         
@@ -92,7 +94,7 @@ export default function Create() {
           required
           />
         </label>
-        <button className="button">Submit</button>
+        <button className="button" style={{background: color}}>Submit</button>
 
       </form>
     </div>

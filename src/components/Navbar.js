@@ -1,3 +1,4 @@
+// Elements
 import { Link } from 'react-router-dom'
 
 // Hooks
@@ -14,8 +15,7 @@ import { ThemeContext } from '../context/ThemeContext'
 import './Navbar.css'
 
 
-
-
+// Function
 export default function Navbar() {
   const { color } = useTheme();
 
