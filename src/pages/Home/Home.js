@@ -21,11 +21,12 @@ export default function Home() {
     setIsPending(true)
 
     // Fetch a collection from Firestore
-    projectFirestore.collection('recipes').get().then((snapshot) => {
+    const unsubscribe = projectFirestore.collection('recipes').onSnapshot((snapshot) => {
       
       // Return error message if collection is empty
       if (snapshot.empty){
         setError('No recipes to load');
+        setIsPending(false);
       } 
       // Get the snapshot id & data
       else {
@@ -33,17 +34,19 @@ export default function Home() {
         snapshot.docs.forEach(doc => {
           results.push({ id: doc.id, ...doc.data() })
         })
+        
         // Update state of isPending and Data
         setData(results)
         setIsPending(false)
       }
-      
-    // Catch block
-    }).catch(err => {
+    }, (err) => {
       setError(err.message)
       setIsPending(false)
     })
 
+    return () => {
+      unsubscribe()
+    }
   }, [])  // End of useEffect
 
   return (
