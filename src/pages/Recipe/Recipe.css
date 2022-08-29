@@ -33,7 +33,10 @@
 }
 
 /* Dark Mode */
-.recipe.dark {
+.recipe.dark,
+.recipe.dark h2.page-title,
+.recipe.dark ul li{
     background: #555;
     color: #e4e4e4;
 }
+
