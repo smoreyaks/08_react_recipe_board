@@ -27,7 +27,7 @@ export default function Recipe() {
     setIsPending(true)
     
     // Retrieve document from Firestore
-    projectFirestore.collection('recipes').doc(id).get().then((doc) => {
+    const unsubscribe = projectFirestore.collection('recipes').doc(id).onSnapshot((doc) => {
       // If document exists, get data
       if (doc.exists) {
         setIsPending(false)
@@ -39,6 +39,8 @@ export default function Recipe() {
         setError('Recipe not found 😞')
       }
     })
+
+    return () => unsubscribe()
     
   }, [id])
   
