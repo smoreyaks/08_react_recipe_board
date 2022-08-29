@@ -16,13 +16,12 @@ const handleSubmit = (e) => {
     return (
         <div className="searchbar">
             <form onSubmit={handleSubmit}>
-                <label htmlFor="search">
-                    Search:
-                </label>
                 <input 
+                    name="search" 
                     type="text" 
-                    id="search"
-                    onChange={(e) => setTerm(e.target.value)}
+                    id="search" 
+                    placeholder="Search Recipes" 
+                    onChange={(e) => setTerm(e.target.value)} 
                     required
                 />
             </form>
