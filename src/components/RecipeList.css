@@ -66,9 +66,11 @@
 /* Delete */
 .delete {
     position: absolute;
-    top: 10px;
+    top: 20px;
     right: 10px;
     cursor: pointer;
     filter: invert(60%);
+    height: 30px;
+    width: 30px;
 }
 
