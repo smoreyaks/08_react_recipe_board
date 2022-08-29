@@ -20,18 +20,25 @@ export default function Home() {
   useEffect(() => {
     setIsPending(true)
 
+    // Fetch a collection from Firestore
     projectFirestore.collection('recipes').get().then((snapshot) => {
+      
+      // Return error message if collection is empty
       if (snapshot.empty){
         setError('No recipes to load');
       } 
+      // Get the snapshot id & data
       else {
         let results = [];
         snapshot.docs.forEach(doc => {
           results.push({ id: doc.id, ...doc.data() })
         })
+        // Update state of isPending and Data
         setData(results)
         setIsPending(false)
       }
+      
+    // Catch block
     }).catch(err => {
       setError(err.message)
       setIsPending(false)
