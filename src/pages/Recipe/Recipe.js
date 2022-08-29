@@ -41,6 +41,13 @@ export default function Recipe() {
     })
     
   }, [id])
+  
+  // Document Data Update Click Handler
+  const handleClick = () => {
+    projectFirestore.collection('recipes').doc(id).update({
+      title: 'Updated Title',
+    })
+  }
 
   return (
     <div className={`recipe ${ mode }`}>
@@ -54,6 +61,7 @@ export default function Recipe() {
             { recipe.ingredients.map(ing => <li key={ ing }>{ ing }</li>)}
           </ul>
           <p className="method">{ recipe.method }</p>
+          <button onClick={() => handleClick()}>Update Me</button>
         </>
       )}
     </div>
