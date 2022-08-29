@@ -1,5 +1,10 @@
+// Firebase
+import { projectFirestore } from '../firebase/config';
 // Elements
 import { Link } from 'react-router-dom'
+
+// SVG
+import trashCan from'../assets/trash-can-delete-icon.svg'
 
 // Hooks
 import { useTheme } from '../hooks/useTheme';
@@ -15,6 +20,11 @@ export default function RecipeList({ recipes }) {
     if (recipes.length === 0) {
         return <div className='error'>No Recipes Found</div>
     }
+    
+    // Click Event Handler Function
+    const handleClick = (id) => {
+        projectFirestore.collection('recipes').doc(id).delete()
+    }
 
     return (
         <div className="recipe-list">
@@ -24,6 +34,12 @@ export default function RecipeList({ recipes }) {
                     <p>{ recipe.cookingTime } to make.</p>
                     <div>{ recipe.method.substring(0, 100) }...</div>
                     <Link to={`/recipes/${recipe.id}`}>Cook This</Link>
+                    <img 
+                        src={trashCan}
+                        className="delete"
+                        onClick={() => handleClick(recipe.id)}
+                        alt="Delete Recipe" 
+                    />
                 </div>
             ))}
         </div>

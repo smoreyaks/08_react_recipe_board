@@ -57,7 +57,18 @@
 
 .recipe-list .card.dark p,
 .recipe-list .card.dark h3,
-.recipe-list .card.dark div {
+.recipe-list .card.dark div,
+.recipe-list .card.dark img.delete {
     color: #e4e4e4;
+}
+
+
+/* Delete */
+.delete {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    filter: invert(60%);
 }
 
